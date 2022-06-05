@@ -1,8 +1,10 @@
 import React from "react";
-import PlacesProvider from "./context/places/PlacesProvider";
+import { PlacesProvider } from "./context";
 
-function MapsApp() {
-  return <PlacesProvider>MapsApp</PlacesProvider>;
-}
-
-export default MapsApp;
+export const MapsApp = () => {
+  return (
+    <PlacesProvider>
+      <h1>Maps App</h1>
+    </PlacesProvider>
+  );
+};

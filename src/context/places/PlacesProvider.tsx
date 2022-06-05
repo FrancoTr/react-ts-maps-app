@@ -15,7 +15,7 @@ interface Props {
   children: JSX.Element | JSX.Element[];
 }
 
-const PlacesProvider = ({ children }) => {
+export const PlacesProvider = ({ children }: Props) => {
   return (
     <PlacesContext.Provider
       value={{
@@ -27,5 +27,3 @@ const PlacesProvider = ({ children }) => {
     </PlacesContext.Provider>
   );
 };
-
-export default PlacesProvider;
