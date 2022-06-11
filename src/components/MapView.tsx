@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import { PlacesContext } from "../context";
 
 export const MapView = () => {
-  return <div>---Geolocation---</div>;
+  const { isLoading, userLocation } = useContext(PlacesContext);
+
+  return <div>{userLocation?.join(",")}</div>;
 };
