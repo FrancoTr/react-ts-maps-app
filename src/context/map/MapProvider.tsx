@@ -12,8 +12,11 @@ const INITIAL_STATE: MapState = {
   isMapReady: false,
   map: undefined,
 };
+interface Props {
+  children: JSX.Element | JSX.Element[];
+}
 
-export const MapProvider = () => {
+export const MapProvider = ({ children }: Props) => {
   const [state, dispatch] = useReducer(mapReducer, INITIAL_STATE);
 
   return (
@@ -21,6 +24,8 @@ export const MapProvider = () => {
       value={{
         ...state,
       }}
-    ></MapContext.Provider>
+    >
+      {children}
+    </MapContext.Provider>
   );
 };
