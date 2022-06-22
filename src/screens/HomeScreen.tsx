@@ -1,5 +1,5 @@
 import React from "react";
-import { MapView, BtnMyLocation, ReactLogo } from "../components";
+import { MapView, BtnMyLocation, ReactLogo, SearchBar } from "../components";
 
 export const HomeScreen = () => {
   return (
@@ -7,6 +7,7 @@ export const HomeScreen = () => {
       <MapView />
       <BtnMyLocation />
       <ReactLogo />
+      <SearchBar />
     </div>
   );
 };
