@@ -9,3 +9,5 @@ const searchApi = axios.create({
       "pk.eyJ1IjoiZnJhbmNvdHIiLCJhIjoiY2trc3VxNzluMW9sNDJvbnZtenFwbDA1NSJ9.HSp8UxneFQJmH5SUZ6VYZg",
   },
 });
+
+export default searchApi;
