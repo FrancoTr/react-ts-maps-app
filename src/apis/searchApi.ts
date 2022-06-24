@@ -5,6 +5,7 @@ const searchApi = axios.create({
   params: {
     limit: 5,
     language: "en",
-    acces_token: "TBD",
+    access_token:
+      "pk.eyJ1IjoiZnJhbmNvdHIiLCJhIjoiY2trc3VxNzluMW9sNDJvbnZtenFwbDA1NSJ9.HSp8UxneFQJmH5SUZ6VYZg",
   },
 });
