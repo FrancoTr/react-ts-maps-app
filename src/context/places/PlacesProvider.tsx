@@ -45,6 +45,7 @@ export const PlacesProvider = ({ children }: Props) => {
     <PlacesContext.Provider
       value={{
         ...state,
+        searchPlacesByTerm,
       }}
     >
       {children}
