@@ -1,6 +1,7 @@
 import React, { useEffect, useReducer } from "react";
 import { searchApi } from "../../apis";
 import { getUserLocation } from "../../helpers";
+import { Feature, PlacesResponse } from "../../interfaces/places";
 import { PlacesContext } from "./PlacesContext";
 import { placesReducer } from "./placesReducer";
 
@@ -25,7 +26,7 @@ export const PlacesProvider = ({ children }: Props) => {
     getUserLocation().then((lngLat) => dispatch({ type: "setUserLocation", payload: lngLat }));
   }, []);
 
-  const searchPlacesByTerm = async (query: string) => {
+  const searchPlacesByTerm = async (query: string): Promise<Feature[]> => {
     if (query.length === 0) {
       return [];
     }
@@ -33,12 +34,12 @@ export const PlacesProvider = ({ children }: Props) => {
       throw new Error("Unable to locate");
     }
 
-    const resp = await searchApi.get(`${query}.json`, {
+    const resp = await searchApi.get<PlacesResponse>(`${query}.json`, {
       params: {
         proximity: state.userLocation.join(","),
       },
     });
-    console.log(resp.data);
+    return resp.data.features;
   };
 
   return (
