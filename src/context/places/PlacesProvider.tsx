@@ -8,11 +8,15 @@ import { placesReducer } from "./placesReducer";
 export interface PlacesState {
   isLoading: boolean;
   userLocation?: [number, number];
+  isLoadingPlaces: boolean;
+  places: Feature[];
 }
 
 const INITIAL_STATE: PlacesState = {
   isLoading: true,
   userLocation: undefined,
+  isLoadingPlaces: false,
+  places: [],
 };
 
 interface Props {
@@ -34,11 +38,15 @@ export const PlacesProvider = ({ children }: Props) => {
       throw new Error("Unable to locate");
     }
 
+    dispatch({ type: "setLoadingPlaces" });
+
     const resp = await searchApi.get<PlacesResponse>(`${query}.json`, {
       params: {
         proximity: state.userLocation.join(","),
       },
     });
+
+    dispatch({ type: "setPlaces", payload: resp.data.features });
     return resp.data.features;
   };
 
