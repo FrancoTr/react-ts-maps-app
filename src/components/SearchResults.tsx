@@ -9,7 +9,7 @@ export const SearchResults = () => {
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, laborum facere
           obcaecati.
         </p>
-        <button className="btn btn-outline-primary">Addresses</button>
+        <button className="btn btn-outline-primary">Address</button>
       </li>
     </ul>
   );
