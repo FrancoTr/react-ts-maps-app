@@ -1,15 +1,12 @@
 import React, { useContext } from "react";
 import { PlacesContext } from "../context";
+import { LoadingPlaces } from "./";
 
 export const SearchResults = () => {
   const { places, isLoadingPlaces } = useContext(PlacesContext);
 
   if (isLoadingPlaces) {
-    return (
-      <div className="alert alert-primary mt-2 text-center">
-        <h6>Searching...</h6>
-      </div>
-    );
+    return <LoadingPlaces />;
   }
 
   return (
