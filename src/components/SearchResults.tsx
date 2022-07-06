@@ -9,6 +9,10 @@ export const SearchResults = () => {
     return <LoadingPlaces />;
   }
 
+  if (places.length === 0) {
+    return <></>;
+  }
+
   return (
     <ul className="list-group mt-3">
       {places.map((place) => (
