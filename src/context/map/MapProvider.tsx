@@ -1,5 +1,5 @@
 import React, { useReducer, useContext, useEffect } from "react";
-import { LngLatBounds, Map, Marker, Popup } from "mapbox-gl";
+import { AnySourceData, LngLatBounds, Map, Marker, Popup } from "mapbox-gl";
 import { MapContext } from "./MapContext";
 import { mapReducer } from "./mapReducer";
 import { PlacesContext } from "../";
@@ -68,6 +68,38 @@ export const MapProvider = ({ children }: Props) => {
     }
 
     state.map?.fitBounds(bounds, { padding: 200 });
+
+    const sourceData: AnySourceData = {
+      type: "geojson",
+      data: {
+        type: "FeatureCollection",
+        features: [
+          {
+            type: "Feature",
+            properties: {},
+            geometry: {
+              type: "LineString",
+              coordinates: coords,
+            },
+          },
+        ],
+      },
+    };
+
+    state.map?.addSource("RouteString", sourceData);
+    state.map?.addLayer({
+      id: "RouteString",
+      type: "line",
+      source: "RouteString",
+      layout: {
+        "line-cap": "round",
+        "line-join": "round",
+      },
+      paint: {
+        "line-color": "black",
+        "line-width": 3,
+      },
+    });
   };
 
   return (
